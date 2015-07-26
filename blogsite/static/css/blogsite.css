@@ -56,14 +56,6 @@ h2{
 	text-decoration: none;
 	color: rgba(250, 16, 48, 1);
 }
-.post-title a:visited{
-	text-decoration: none;
-	color: rgba(107, 0, 56, 1);
-}
-.post-title a:visited:hover{
-	text-decoration: none;
-	color: rgba(250, 16, 48, 1);
-}
 
 .posts{
 	padding: 20px 0px;
