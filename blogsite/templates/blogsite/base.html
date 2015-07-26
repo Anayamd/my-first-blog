@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	{% block head %}
+	<meta charset="UTF-8">
+	<title>Anayamd{% block title %} {% endblock %}</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="{% static 'css/blogsite.css' %}">
+
+	<!-- Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+	
+	{% endblock %}
+</head>
+
+<body>
+	<header>
+		<h1 class="title"><a href="/">Anayamd</a></h1>
+	</header>
+	<section class="posts">
+		{% block content %}
+		{% endblock %}
+	</section>
+</body>
+</html>

@@ -1,17 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<title>Diego's Blog</title>
-</head>
-<body>
-	<h1>Diego's Blog</h1>
+{% extends "blogsite/base.html" %}
+
+{% block head %}
+	{{ block.super }}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(".read-more").click(function(){
+			$(this).closest("article").find("h2:first").find("a").trigger("click");
+		});
+	});
+	</script>
+{% endblock %}
+
+{% block content %}
 	{% for post in posts %}
-		<div>
-			<p>published: {{ post.published_date }}</p>
-			<h2><a href="">{{ post.title }}</a></h2>
-			<p>{{ post.text|linebreaks }}</p>
-		</div>
+		<article class="col-md-10 col-md-push-1 col-sm-10 col-sm-push-1 col-xs-12 individual-post">
+			<p class="date">{{ post.published_date }}</p>
+			<h2 class="post-title"><a href="{% url "post_detail" pk=post.pk %}">{{ post.title }}</a></h2>
+			<p class="text">{{ post.text|truncatechars:255 }}
+			<span class="read-more">Leer más</span>
+			</p>
+		</article>
 	{% endfor %}
-</body>
-</html>
+{% endblock %}
