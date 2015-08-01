@@ -1,0 +1,16 @@
+{% extends "blogsite/base.html" %}
+
+{% block title %}
+	| Edit Post
+{% endblock %}
+
+{% block content %}
+	<article class="col-md-10 col-md-push-1 col-sm-10 col-sm-push-1 col-xs-12">
+		<h2 class="post-title">New Post</h2>
+		<form method="POST" class="post-form">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button type="submit" class="save btn btn-default">SAVE</button>
+		</form>
+	</article>
+{% endblock %}

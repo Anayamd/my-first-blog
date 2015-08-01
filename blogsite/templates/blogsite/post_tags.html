@@ -1,5 +1,9 @@
 {% extends "blogsite/base.html" %}
 
+{% block title %}
+	| {{ tag }}
+{% endblock %}
+
 {% block buscador %}
 	<form id="live-search" action="" class="center" method="post" onsubmit="return false;">
 		{% csrf_token %}
@@ -10,11 +14,12 @@
 {% endblock buscador %}
 
 {% block content %}
+	<h2 class="tag-title">&lt;{{ tag }}&gt;</h2>
 	{% for post in posts %}
 		<article class="individual-post">
-			<p class="date">{{ post.published_date|date:"d/M/Y" }} | <a href="{% url "post_tags" tag=post.tags %}" class="tag">&lt;{{ post.tags }}&gt;</a></p>
+			<p class="date">{{ post.published_date|date:"d/M/Y" }}</p>
 			<h2 class="post-title"><a href="{% url "post_detail" pk=post.pk %}">{{ post.title }}</a></h2>
-			<p class="text small-space">{{ post.text|truncatechars:300 }}
+			<p class="text">{{ post.text|truncatechars:300 }}
 				<span><a href="{% url "post_detail" pk=post.pk %}" class="read-more">Leer más</a></span>
 			</p>
 		</article>
@@ -38,7 +43,7 @@
 				var filter = $(this).val();
 
 				// Loop through the list
-				$("h2").each(function(){
+				$(".post-title").each(function(){
 
 					// If the list item does not contain the text phrase fade it out
 					if ($(this).text().search(new RegExp(filter, "i")) < 0) {

@@ -15,21 +15,29 @@ body{
 	font-size: 2em;
 }
 header{
-	background-color: rgba(0, 65, 55, 1);
-	padding: 20px 0px;
+	background-color: rgba(11, 83, 121, 1);
+	padding: 30px 5em;
 	margin-top: 0px;
 }
 h1{
 	font-size: 2.6em;
-	margin-left: 15px;
 	letter-spacing: 2px;
 	font-weight: bold;
 	font-family: 'Ubuntu', sans-serif;
+	display: inline;
 }
 h2{
 	font-size: 2em;
 	font-weight: bold;
 	font-family: 'Ubuntu', sans-serif;
+}
+div > img{
+	-moz-border-radius: 50px/50px;
+	-webkit-border-radius: 50px 50px;
+	border-radius: 50px/50px;
+	border:solid 4em rgba(0, 0, 0, 0);
+	width:50px;
+	height:50px;
 }
 
 .title a{
@@ -38,10 +46,14 @@ h2{
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
 	color: #fff;
+	text-decoration: none;
 }
 .title a:hover{
 	text-decoration: none;
 	color: rgba(0, 168, 88, 1);
+}
+.title a:visited{
+	text-decoration: none;
 }
 
 .post-title a{
@@ -51,6 +63,7 @@ h2{
 	transition: color 0.3s ease;
 	color: #000;
 	text-decoration: none;
+	display: inline;
 }
 .post-title a:hover{
 	text-decoration: none;
@@ -65,25 +78,27 @@ h2{
 	-moz-box-shadow: 0 5px 4px -4px rgba(0, 0, 0, .75);
 	-o-box-shadow: 0 5px 4px -4px rgba(0, 0, 0, .75);
 	box-shadow: 0 5px 4px -4px rgba(0, 0, 0, .75);
-	padding-bottom: 25px;
+	padding-bottom: 10px;
 	margin-bottom: 50px;
 }
 .date{
 	color: #828282;
 	float: right;
 	font-size: .8em;
+	padding-top: 5px;
 }
 .text{
 	font-size: 1em;
 	text-align: justify;
 	text-justify: inter-word;
+	margin-top: 15px;
 }
 .read-more{
 	-webkit-transition: color 0.3s ease;
 	-moz-transition: color 0.3s ease;
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
-	color: rgba(0, 65, 55, 1);
+	color: rgba(11, 83, 121, 1);
 	text-decoration: none;
 	font-weight: bold;
 	cursor: pointer;
@@ -93,6 +108,79 @@ h2{
 	text-decoration: none;
 	color: rgba(250, 16, 48, 1);
 }
+.tag{
+	-webkit-transition: color 0.3s ease;
+	-moz-transition: color 0.3s ease;
+	-o-transition: color 0.3s ease;
+	transition: color 0.3s ease;
+	color: rgba(0, 146, 178, 1);
+	text-decoration: none;
+}
+.tag:hover{
+	text-decoration: none;
+	color: rgba(249, 38, 114, 1);
+}
+.new-post{
+	float: right;
+	font-size: 2em;
+	color: #fff;
+	display: inline;
+}
+.new-post:hover{
+	color: rgba(0, 168, 88, 1);
+}
+.new-post:visited{
+	color: #fff;
+}
+.new-post:visited:hover{
+	color: rgba(0, 168, 88, 1);
+}
+.save{
+	float: right;
+	margin-right: 1em;
+	margin-bottom: 2em;
+}
+.post-form textarea, .post-form input{
+	width: 100%;
+	border-radius: 20px;
+	outline: none;
+	padding: 0 1em;
+}
+.tag-title{
+	text-align: center;
+	color: rgba(11, 83, 121, 1);
+}
+.center{
+	text-align: center;
+}
+.buscador-interno{
+	text-transform: capitalize;
+	border-radius: 10px;
+	height: 35px;
+	padding: 1em;
+	font-size: .8em;
+	outline: 0;
+	text-align: center;
+	width: 20%;
+	margin-top: 20px;
+	border: solid 3px rgba(0, 146, 178, 1);
+	-webkit-transition: border 0.3s ease;
+	-moz-transition: border 0.3s ease;
+	-o-transition: border 0.3s ease;
+	transition: border 0.3s ease;
+}
+.buscador-interno:focus{
+	border-color: rgba(250, 16, 48, 1);
+}
+.edit{
+	float: right;
+	margin-left: 10px;
+	font-size: .6em;
+}
+.txt-detail{
+	margin-top: 30px;
+}
+
 
 @media screen and (max-width: 767px){
 	@media screen and (min-height: 480px){
@@ -102,13 +190,21 @@ h2{
 		h1{
 			font-size: 2em;
 		}
+		header{
+			padding: 30px 1em;
+		}
+		.buscador-interno{
+			width: 100%;
+		}
 	}
 }
 @media screen and (min-width: 768px) and (max-width: 992px){
 	h1{
 		font-size: 2em;
-		margin-left: 85px;
 	}
+	.buscador-interno{
+			width: 40%;
+		}
 	@media screen and (min-height: 911px){
 		body{
 			font-size: 2.3em;
@@ -121,6 +217,5 @@ h2{
 @media screen and (min-width: 992px){
 	h1{
 		font-size: 2em;
-		margin-left: 115px;
 	}
 }

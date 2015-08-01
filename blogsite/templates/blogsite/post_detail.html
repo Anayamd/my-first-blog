@@ -6,10 +6,11 @@
 
 {% block content %}
 	<article class="col-md-10 col-md-push-1 col-sm-10 col-sm-push-1 col-xs-12">
+		<a href="{% url "post_edit" pk=post.pk %}" class="btn btn-default edit"><span class="glyphicon glyphicon-pencil"></span></a>
 		{% if post.published_date %}
-			<p class="date">{{ post.published_date }}</p>
+			<p class="date">{{ post.published_date|date:"d/M/Y" }}</p>
 		{% endif %}
 		<h2 class="post-title">{{ post.title }}</h2>
-		<p class="text">{{ post.text|linebreaks }}</p>
+		<p class="text txt-detail">{{ post.text|linebreaks }}</p>
 	</article>
 {% endblock %}

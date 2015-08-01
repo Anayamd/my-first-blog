@@ -4,7 +4,7 @@
 <head>
 	{% block head %}
 	<meta charset="UTF-8">
-	<title>Anayamd{% block title %} {% endblock %}</title>
+	<title>LibreUAQ{% block title %} {% endblock %}</title>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -22,11 +22,22 @@
 
 <body>
 	<header>
-		<h1 class="title"><a href="/">Anayamd</a></h1>
+		<a href="{% url "post_new" %}" class="new-post"><span class="glyphicon glyphicon-plus plusplus"></span></a>
+		<h1 class="title"><a href="/">LibreUAQ</a></h1>
 	</header>
+	<aside class="col-md-12">
+		{% block buscador %}	
+		{% endblock buscador %}
+	</aside>
+	<div class="col-md-1 col-sm-1 hidden-xs"><img></div>
 	<section class="posts">
-		{% block content %}
-		{% endblock %}
+		<section class="col-md-10 col-sm-10 col-xs-12">
+			{% block content %}
+			{% endblock %}
+		</section>
 	</section>
+
+	{% block end %}
+	{% endblock end %}
 </body>
 </html>
