@@ -1,0 +1,106 @@
+p span{	
+	display:none;
+	color:#fff;
+	background:rgba(51,51,51,0.75);
+	padding:20px;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	width: 70%;
+	text-align:center;
+	position: absolute;
+	right: -10%;
+	top: 0px;
+	z-index:10;
+}
+p:hover span{ display:block; }
+
+/* zocial */
+[class*="entypo-"]:before {
+	font-family: 'entypo', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box; 
+}
+
+form {
+	position:relative;
+	margin: 50px auto;
+	width: 380px;
+	height: auto;
+}
+
+input {
+	padding: 16px;
+	border-radius:7px;
+	border:0px;
+	background: rgba(39, 33, 37, .2);
+	display: block;
+	margin: 15px auto;
+	width: 300px;
+	color: white;
+	font-size:18px;
+	height: 54px;
+	max-width: 70%;
+}
+
+input:focus {
+	outline-color: rgba(0,0,0,0);
+	background: rgba(39, 33, 37, .95);
+	color: #e74c3c;
+}
+
+.button {
+	font-weight: bold;
+	background: rgba(39, 33, 37, .95);
+}
+.button:hover {	
+	background: #e74c3c;
+	color: rgba(39, 33, 37, .95);
+}
+
+.inputUserIcon {
+	position:absolute;
+	top:68px;
+	right: 80px;
+	color:white;
+}
+
+.inputPassIcon {
+	position:absolute;
+	top:136px;
+	right: 80px;
+	color:white;
+}
+
+input::-webkit-input-placeholder {
+	color: white;
+}
+
+input:focus::-webkit-input-placeholder {
+	color: #e74c3c;
+}
+
+
+h3 {
+	font-size: 1.2em;
+}
+
+.register-change {
+	text-align: center;
+}
+
+.register-change > h3 > a {
+	text-decoration: none;
+	color: rgba(250, 16, 48, 1);
+}
+.register-change > h3 > a:hover {
+	text-decoration: none;
+	color: rgba(0, 146, 178, 1);
+
+}

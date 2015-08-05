@@ -25,6 +25,7 @@ SECRET_KEY = 'kpvl++24_i=d!&e&o^6290&+j#z97#r*0l%q=ag%xk78(tc777'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#ALLOWED_INCLUDE_ROOTS =  (os.path.join(BASE_DIR, 'media'),)
 ALLOWED_HOSTS = []
 
 
@@ -65,6 +66,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'allowed_include_roots': [
+                'media/documents',
+            ]
         },
     },
 ]
@@ -102,3 +106,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+LOGIN_REDIRECT_URL = '/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'media/'

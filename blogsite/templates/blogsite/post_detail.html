@@ -6,11 +6,31 @@
 
 {% block content %}
 	<article class="col-md-10 col-md-push-1 col-sm-10 col-sm-push-1 col-xs-12">
-		<a href="{% url "post_edit" pk=post.pk %}" class="btn btn-default edit"><span class="glyphicon glyphicon-pencil"></span></a>
+		{% if user.is_authenticated %}
+			<a href="{% url "post_remove" pk=post.pk %}" class="btn btn-default edit remove"><span class="glyphicon glyphicon-remove"></span></a>
+			<a href="{% url "post_edit" pk=post.pk %}" class="btn btn-default edit"><span class="glyphicon glyphicon-pencil"></span></a>
+		{% endif %}
 		{% if post.published_date %}
 			<p class="date">{{ post.published_date|date:"d/M/Y" }}</p>
 		{% endif %}
 		<h2 class="post-title">{{ post.title }}</h2>
 		<p class="text txt-detail">{{ post.text|linebreaks }}</p>
+		
+		{% if post.docfile %}
+			<a href="../../{{ post.docfile.url }}">{{ post.docfile }}</a>
+		{% endif %}
 	</article>
 {% endblock %}
+
+{% block end %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('.remove').click(function(e) {
+			e.preventDefault();
+			alert('Vas a borrar un post!!! Da click otra vez para confirmar.');
+			$(this).unbind('click').css({"color" : "rgba(250, 16, 48, 1)", "border-color" : "rgba(250, 16, 48, 1)", });
+		});
+	});
+	</script>
+{% endblock end %}

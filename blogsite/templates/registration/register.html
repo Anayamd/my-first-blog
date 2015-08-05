@@ -1,0 +1,22 @@
+{% extends "blogsite/base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock head %}
+
+{% block title %}
+	| Register
+{% endblock %}
+
+{% block content %}
+  <h2 class="tag-title">Crea una cuenta</h2>
+
+  <form action="" method="post">
+  	{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create the account" class="button">
+  </form>
+
+{% endblock %}
