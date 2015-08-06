@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.contrib.auth.models import User
 
 from django.utils import timezone
 from .models import Post
@@ -10,10 +11,12 @@ from .forms import PostForm, UserCreateForm
 def post(request):
 	return redirect('blogsite.views.post_list')
 
+
 def post_list(request):
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 	return render(request, 'blogsite/post_list.html', {'posts' : posts})
 
+@login_required
 def post_detail(request, pk):
 	post = get_object_or_404(Post, pk=pk)
 	return render(request, 'blogsite/post_detail.html', {'post' : post})
@@ -51,11 +54,19 @@ def post_edit(request, pk):
 		form = PostForm(instance=post)
 	return render(request, 'blogsite/post_edit.html', {'form' : form})
 
+@login_required
 def post_tags(request, tag):
 	posts = Post.objects.filter(tags=tag).order_by('-published_date')
 	if len(posts) == 0:
 		return redirect('blogsite.views.post_list')
-	return render(request, 'blogsite/post_tags.html', {'posts' : posts, 'tag' : tag})
+	return render(request, 'blogsite/post_search.html', {'posts' : posts, 'search' : '<'+tag+'>'})
+
+@login_required
+def post_author(request, user):
+	posts = Post.objects.filter(author__username=user)
+	if len(posts) == 0:
+		return redirect('blogsite.views.post_list')
+	return render(request, 'blogsite/post_search.html', {'posts' : posts, 'search' : user})
 
 @login_required
 def post_remove(request, pk):

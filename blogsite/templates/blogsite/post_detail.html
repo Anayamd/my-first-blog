@@ -7,7 +7,9 @@
 {% block content %}
 	<article class="col-md-10 col-md-push-1 col-sm-10 col-sm-push-1 col-xs-12">
 		{% if user.is_authenticated %}
-			<a href="{% url "post_remove" pk=post.pk %}" class="btn btn-default edit remove"><span class="glyphicon glyphicon-remove"></span></a>
+			{% if user.is_staff %}
+				<a href="{% url "post_remove" pk=post.pk %}" class="btn btn-default edit remove"><span class="glyphicon glyphicon-remove"></span></a>				
+			{% endif %}
 			<a href="{% url "post_edit" pk=post.pk %}" class="btn btn-default edit"><span class="glyphicon glyphicon-pencil"></span></a>
 		{% endif %}
 		{% if post.published_date %}

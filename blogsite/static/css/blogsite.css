@@ -99,7 +99,7 @@ div > img{
 	-moz-transition: color 0.3s ease;
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
-	color: #e74c3c;
+	color: #000;
 	text-decoration: none;
 	font-weight: bold;
 	cursor: pointer;
@@ -109,17 +109,27 @@ div > img{
 	text-decoration: none;
 	color: rgba(0, 146, 178, 1);
 }
+.author{
+	border-radius: 8px;
+	padding: 3px;
+	color: rgba(231, 76, 60, 1);
+	text-decoration: none;
+}
+.author:hover{
+	text-decoration: none;
+	color: #fff;
+	background-color: rgba(231, 76, 60, 1);
+}
 .tag{
-	-webkit-transition: color 0.3s ease;
-	-moz-transition: color 0.3s ease;
-	-o-transition: color 0.3s ease;
-	transition: color 0.3s ease;
-	color: #e74c3c;
+	color: rgba(0, 146, 178, 1);
+	border-radius: 8px;
+	padding: 3px;
 	text-decoration: none;
 }
 .tag:hover{
 	text-decoration: none;
-	color: rgba(0, 146, 178, 1);
+	background-color: rgba(0, 146, 178, 1);
+	color: #fff;
 }
 .top-menu{
 	float: right;
@@ -201,19 +211,17 @@ div > img{
 
 
 @media screen and (max-width: 767px){
-	@media screen and (min-height: 480px){
-		body{
-			font-size: 3em;
-		}
-		h1{
-			font-size: 2em;
-		}
-		header{
-			padding: 30px 1em;
-		}
-		.buscador-interno{
-			width: 100%;
-		}
+	body{
+		font-size: 2em;
+	}
+	h1{
+		font-size: 2em;
+	}
+	header{
+		padding: 30px 1em;
+	}
+	.buscador-interno{
+		width: 100%;
 	}
 }
 @media screen and (min-width: 768px) and (max-width: 992px){
