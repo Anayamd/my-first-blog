@@ -63,7 +63,7 @@ def post_tags(request, tag):
 
 @login_required
 def post_author(request, user):
-	posts = Post.objects.filter(author__username=user)
+	posts = Post.objects.filter(author__username=user).order_by('-published_date')
 	if len(posts) == 0:
 		return redirect('blogsite.views.post_list')
 	return render(request, 'blogsite/post_search.html', {'posts' : posts, 'search' : user})
