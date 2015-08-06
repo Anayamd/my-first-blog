@@ -24,7 +24,7 @@ class Post(models.Model):
 	text = models.TextField()
 	created_date = models.DateTimeField(default=timezone.now)
 	published_date = models.DateTimeField(blank=True, null=True)
-	tags = models.CharField(choices=tag_choices, default=_random, max_length=12)
+	tags = models.CharField(choices=tag_choices, default=_random, max_length=25)
 	docfile = models.FileField(null=True, upload_to='documents')
 
 	def publish(self):
