@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Post
 
 class PostForm(forms.ModelForm):
-    docfile = forms.FileField(label='Select a file', required=False)
+    docfile = forms.FileField(label='File', required=False)
     
     class Meta:
         model = Post
