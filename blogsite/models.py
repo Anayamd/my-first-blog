@@ -5,16 +5,16 @@ from django.utils import timezone
 class Post(models.Model):
 	#tag options
 	_random = 'Random'
-	_IPS = 'Intro Programación'
+	_IPS = 'IPS'
 	_Admin = 'Admin'
-	_TICs = 'Intro TICs'
+	_TICs = 'Intro_TICs'
 	_Mate = 'Matemáticas'
 	_Etica = 'Ética'
 	tag_choices = (
 		(_random, 'Random'),
-		(_IPS, 'Intro Programación'),
+		(_IPS, 'IPS'),
 		(_Admin, 'Admin'),
-		(_TICs, 'Intro TICs'),
+		(_TICs, 'Intro_TICs'),
 		(_Mate, 'Matemáticas'),
 		(_Etica, 'Ética'),
 		)
@@ -24,7 +24,7 @@ class Post(models.Model):
 	text = models.TextField()
 	created_date = models.DateTimeField(default=timezone.now)
 	published_date = models.DateTimeField(blank=True, null=True)
-	tags = models.CharField(choices=tag_choices, default=_random, max_length=25)
+	tags = models.CharField(choices=tag_choices, default=_random, max_length=140)
 	docfile = models.FileField(null=True, blank=True, upload_to='documents')
 
 	def publish(self):
