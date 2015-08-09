@@ -17,7 +17,10 @@
 			<p class="text small-space">{{ post.text|truncatechars:300 }}
 				<span><a href="{% url "post_detail" pk=post.pk %}" class="read-more">Leer más</a></span>
 			</p>
-			<a href="{% url "blogsite.views.post_detail" pk=post.pk %}" class="author">Comentarios: {{ post.comments.count }}</a>
+			<a href="{% url "blogsite.views.post_detail" pk=post.pk %}" class="red">Comentarios: {{ post.comments.count }}</a>
+			{% if post.docfile %}
+				| <a href="{% url "blogsite.views.post_detail" pk=post.pk %}" class="blue">Archivo Adjunto</a>
+			{% endif %}
 		</article>
 	{% endfor %}
 {% endblock %}

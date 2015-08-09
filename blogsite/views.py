@@ -11,7 +11,6 @@ from .forms import PostForm, UserCreateForm, CommentForm
 def post(request):
 	return redirect('blogsite.views.post_list')
 
-
 def post_list(request):
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 	return render(request, 'blogsite/post_list.html', {'posts' : posts})
@@ -19,7 +18,17 @@ def post_list(request):
 @login_required
 def post_detail(request, pk):
 	post = get_object_or_404(Post, pk=pk)
-	return render(request, 'blogsite/post_detail.html', {'post' : post})
+	if request.method == "POST":
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			comment = form.save(commit=False)
+			comment.post = post
+			comment.author = request.user
+			comment.save()
+			return redirect('blogsite.views.post_detail', pk=post.pk)
+	else:
+		form = CommentForm()
+	return render(request, 'blogsite/post_detail.html', {'post' : post, 'form' : form})
 
 @login_required
 def post_new(request):
@@ -73,20 +82,6 @@ def post_remove(request, pk):
 	post = get_object_or_404(Post, pk=pk)
 	post.delete()
 	return redirect('blogsite.views.post_list')
-
-@login_required
-def add_comment_to_post(request, pk):
-	post = get_object_or_404(Post, pk=pk)
-	if request.method == "POST":
-		form = CommentForm(request.POST)
-		if form.is_valid():
-			comment = form.save(commit=False)
-			comment.post = post
-			comment.save()
-			return redirect('blogsite.views.post_detail', pk=post.pk)
-	else:
-		form = CommentForm()
-	return render(request, 'blogsite/add_comment_to_post.html', {'form': form})
 
 def register(request):
 	if request.method == 'POST':

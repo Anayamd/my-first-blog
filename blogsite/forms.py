@@ -31,7 +31,8 @@ class UserCreateForm(UserCreationForm):
         return user
 
 class CommentForm(forms.ModelForm):
-
+    text = forms.CharField(widget=forms.Textarea, label='Comenta:')
+    
     class Meta:
         model = Comment
-        fields = ('author', 'text')
+        fields = ('text',)

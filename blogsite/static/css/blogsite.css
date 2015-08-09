@@ -214,10 +214,13 @@ div > img{
 	margin-top: 30px;
 }
 .comment {
-    margin: 20px 0px 20px 20px;
+	margin: 15px 0px;
+	padding: 10px;
+	border-radius: 15px;
+    background-color: rgba(0, 243, 0, .25);
 }
 .esp-abajo{
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }
 .comentar{
 	font-size: .8em;
@@ -227,11 +230,26 @@ div > img{
 	background: rgba(0,0,0,0);
 	border: solid 3px rgba(39, 33, 37, .8);
 	text-decoration: none;
+	cursor: pointer;
 }
 .comentar:hover{
 	text-decoration: none;
 	color: rgba(231, 76, 60, 1);
 	border-color: rgba(231, 76, 60, 1);
+}
+.red{
+	color: rgba(231, 76, 60, 1);
+}
+.red:hover{
+	color: rgba(231, 76, 60, .7);
+	text-decoration: none;
+}
+.blue{	
+	color: rgba(0, 146, 178, 1);
+}
+.blue:hover{	
+	color: rgba(0, 146, 178, .7);
+	text-decoration: none;
 }
 
 

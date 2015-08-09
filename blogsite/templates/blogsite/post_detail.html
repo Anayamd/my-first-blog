@@ -20,24 +20,30 @@
 		<p class="text txt-detail">{{ post.text|linebreaks }}</p>
 		
 		{% if post.docfile %}
-			<br><b>Archivo:</b><a href="../../{{ post.docfile.url }}" class="tag"> {{ post.docfile|capfirst }} </a>|<a class="author" href="../../{{ post.docfile.url }}" download> DESCARGA</a>
+			<br><div class="center"><b>Archivo:</b><a href="../../{{ post.docfile.url }}" class="tag"> {{ post.docfile|capfirst }} </a>|<a class="author" href="../../{{ post.docfile.url }}" download> DESCARGA</a></div>
 		{% endif %}
 	</article>
 
 	<!-- COMMENTS -->
 	<section class="col-md-10 col-md-push-1 col-sm-10 col-sm-push-1 col-xs-12">
 		<hr>
-		<div class="center"><a class="comentar" href="{% url "add_comment_to_post" pk=post.pk %}">Agrega comentario</a></div>
-		{% for comment in post.comments.all %}
-			<div class="comment">
-				<div class="date">{{ comment.created_date|date:"d/M/Y" }}</div>
-				<strong>{{ comment.author }}</strong>
-				<p>{{ comment.text|linebreaks }}</p>
-			</div>
-		{% empty %}
-			<br>
-			<p class="center">Ningún comentario aún :(</p>
-		{% endfor %}
+		<div class="center"><span class="comentar">Agrega comentario</span></div>
+		<div class="col-md-10 col-md-push-1 col-sm-10 col-sm-push-1 col-xs-12">
+			{% for comment in post.comments.all %}
+				<div class="comment">
+					<div class="date">{{ comment.created_date|date:"d/M/Y" }}</div>
+					<strong>{{ comment.author|capfirst }}</strong>
+					<p>{{ comment.text|linebreaks }}</p>
+				</div>
+			{% empty %}
+				<br>
+				<p class="center">Ningún comentario aún :(</p>
+			{% endfor %}
+			<form method="POST" class="post-form">{% csrf_token %}
+				{{ form.as_p }}
+				<button type="submit" class="save btn btn-default">Enviar</button>
+			</form>
+		</div>
 	</section>
 
 {% endblock %}
@@ -46,10 +52,21 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
+		$("form").toggle();
+
 		$('.remove').click(function(e) {
 			e.preventDefault();
 			alert('Vas a borrar un post!!! Da click otra vez para confirmar.');
 			$(this).unbind('click').css({"color" : "rgba(250, 16, 48, 1)", "border-color" : "rgba(250, 16, 48, 1)", });
+		});
+
+		$("textarea").attr({"rows": "4",});
+		
+		$("p").css({"margin": "0",});
+
+		$(".comentar").click(function () {
+			$("form").toggle();
+			$(".comentar").toggle();
 		});
 	});
 	</script>
