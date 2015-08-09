@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block content %}
-	<article class="col-md-10 col-md-push-1 col-sm-10 col-sm-push-1 col-xs-12">
+	<!-- POST -->
+	<article class="col-md-10 col-md-push-1 col-sm-10 col-sm-push-1 col-xs-12 esp-abajo">
 		{% if user.is_authenticated %}
 			{% if user.is_staff %}
 				<a href="{% url "post_remove" pk=post.pk %}" class="btn btn-default edit remove"><span class="glyphicon glyphicon-remove"></span></a>				
@@ -19,9 +20,26 @@
 		<p class="text txt-detail">{{ post.text|linebreaks }}</p>
 		
 		{% if post.docfile %}
-			<a href="../../{{ post.docfile.url }}">{{ post.docfile }}</a>
+			<br><b>Archivo:</b><a href="../../{{ post.docfile.url }}" class="tag"> {{ post.docfile|capfirst }} </a>|<a class="author" href="../../{{ post.docfile.url }}" download> DESCARGA</a>
 		{% endif %}
 	</article>
+
+	<!-- COMMENTS -->
+	<section class="col-md-10 col-md-push-1 col-sm-10 col-sm-push-1 col-xs-12">
+		<hr>
+		<div class="center"><a class="comentar" href="{% url "add_comment_to_post" pk=post.pk %}">Agrega comentario</a></div>
+		{% for comment in post.comments.all %}
+			<div class="comment">
+				<div class="date">{{ comment.created_date|date:"d/M/Y" }}</div>
+				<strong>{{ comment.author }}</strong>
+				<p>{{ comment.text|linebreaks }}</p>
+			</div>
+		{% empty %}
+			<br>
+			<p class="center">Ningún comentario aún :(</p>
+		{% endfor %}
+	</section>
+
 {% endblock %}
 
 {% block end %}

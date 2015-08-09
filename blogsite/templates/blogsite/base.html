@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="demo_icon.gif" type="image/gif" sizes="16x16">
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/png">
 	<title>LibreUAQ{% block title %} {% endblock %}</title>
 
 	<!-- Bootstrap -->
@@ -31,7 +31,7 @@
 		{% else %}
 			<a href="{% url "django.contrib.auth.views.login" %}" class="new-post"><span class="glyphicon glyphicon-user"></span></a>
 		{% endif %}
-		<h1 class="title"><a href="/">LibreUAQ</a></h1>
+		<h1 class="title"><a href="/"><img src="{% static 'images/logo_blanco.png' %}" class="logo-header"> LibreUAQ</a></h1>
 	</header>
 	<aside class="col-md-12">
 		{% block buscador %}	

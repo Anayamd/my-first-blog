@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 from django.utils import timezone
 from .models import Post
-from .forms import PostForm, UserCreateForm
+from .forms import PostForm, UserCreateForm, CommentForm
 
 # Create your views here.
 def post(request):
@@ -73,6 +73,20 @@ def post_remove(request, pk):
 	post = get_object_or_404(Post, pk=pk)
 	post.delete()
 	return redirect('blogsite.views.post_list')
+
+@login_required
+def add_comment_to_post(request, pk):
+	post = get_object_or_404(Post, pk=pk)
+	if request.method == "POST":
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			comment = form.save(commit=False)
+			comment.post = post
+			comment.save()
+			return redirect('blogsite.views.post_detail', pk=post.pk)
+	else:
+		form = CommentForm()
+	return render(request, 'blogsite/add_comment_to_post.html', {'form': form})
 
 def register(request):
 	if request.method == 'POST':

@@ -41,6 +41,11 @@ div > img{
 	height:50px;
 }
 
+.logo-header{
+	width: 30px;
+	height: 35px;
+	padding-bottom: 5px;
+}
 .title a{
 	-webkit-transition: color 0.3s ease;
 	-moz-transition: color 0.3s ease;
@@ -68,7 +73,7 @@ div > img{
 }
 .post-title a:hover{
 	text-decoration: none;
-	color: rgba(250, 16, 48, 1);
+	color: rgba(39, 33, 37, .8);
 }
 
 .posts{
@@ -107,7 +112,7 @@ div > img{
 }
 .read-more:hover{
 	text-decoration: none;
-	color: rgba(0, 146, 178, 1);
+	color: rgba(39, 33, 37, .8);
 }
 .author{
 	border-radius: 8px;
@@ -208,6 +213,27 @@ div > img{
 .txt-detail{
 	margin-top: 30px;
 }
+.comment {
+    margin: 20px 0px 20px 20px;
+}
+.esp-abajo{
+	margin-bottom: 20px;
+}
+.comentar{
+	font-size: .8em;
+	padding: 7px;
+	border-radius: 10px;
+	color: rgba(39, 33, 37, .8);
+	background: rgba(0,0,0,0);
+	border: solid 3px rgba(39, 33, 37, .8);
+	text-decoration: none;
+}
+.comentar:hover{
+	text-decoration: none;
+	color: rgba(231, 76, 60, 1);
+	border-color: rgba(231, 76, 60, 1);
+}
+
 
 #docfile-clear_id{
 	margin-left: 1.5em;
@@ -217,10 +243,10 @@ div > img{
 
 @media screen and (max-width: 767px){
 	body{
-		font-size: 2em;
+		font-size: 1.6em;
 	}
 	h1{
-		font-size: 2em;
+		font-size: 1.6em;
 	}
 	header{
 		padding: 30px 1em;
@@ -230,23 +256,18 @@ div > img{
 	}
 }
 @media screen and (min-width: 768px) and (max-width: 992px){
-	h1{
-		font-size: 2em;
-	}
 	.buscador-interno{
-			width: 40%;
-		}
-	@media screen and (min-height: 911px){
-		body{
-			font-size: 2.3em;
-		}
-		h1{
-			font-size: 2.4em;
-		}
+		width: 40%;
+	}
+	body{
+		font-size: 1.6em;
 	}
 }
 @media screen and (min-width: 992px){
+	body{
+		font-size: 1.7em;
+	}
 	h1{
-		font-size: 2em;
+		font-size: 1.6em;
 	}
 }
